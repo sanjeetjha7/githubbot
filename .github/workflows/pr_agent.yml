@@ -16,5 +16,12 @@ jobs:
         id: pragent
         uses: Codium-ai/pr-agent@main
         env:
-          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+          OPENAI.API_TYPE: "azure"
+          DEPLOYMENT_ID: "gpt-4o" # custom name of the deployed model on Azure
+          OPENAI_KEY: ${{ secrets.AZURE_API_KEY }}
+          API_BASE: ${{ secrets.API_BASE }}
+          API_VERSION: ${{ secrets.API_VERSION }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+          
