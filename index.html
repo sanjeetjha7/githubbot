@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnerable Web Page</title>
+</head>
+<body>
+    <h1>Welcome to the Vulnerable Web Page</h1>
+    
+    <!-- Known Issue: Inline JavaScript -->
+    <script>
+        alert('This page is vulnerable to various attacks!');
+    </script>
+    
+    <!-- Vulnerability: Reflected XSS (Cross-Site Scripting) -->
+    <form action="search.html" method="GET">
+        <label for="query">Search:</label>
+        <input type="text" id="query" name="query">
+        <input type="submit" value="Search">
+    </form>
+    
+    <!-- Vulnerability: Insecure Direct Object Reference -->
+    <a href="user_profile?id=12345">View Profile</a>
+    
+    <!-- Known Issue: Inline CSS -->
+    <div style="background-color: red; color: white;">
+        This is a warning box with inline CSS!
+    </div>
+    
+    <!-- Vulnerability: Unvalidated Redirects and Forwards -->
+    <a href="http://evil.com">Click here for a surprise!</a>
+    
+    <!-- Vulnerability: Missing CSRF Token -->
+    <form action="update_profile.html" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <input type="submit" value="Update Profile">
+    </form>
+    
+    <!-- Known Issue: Hardcoded Sensitive Information -->
+    <p>Admin Password: <span id="admin-password">admin123</span></p>
+    
+    <!-- Vulnerability: Unrestricted File Upload -->
+    <form action="upload.html" method="POST" enctype="multipart/form-data">
+        <label for="file">Upload your file:</label>
+        <input type="file" id="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
